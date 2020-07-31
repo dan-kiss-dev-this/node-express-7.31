@@ -5,6 +5,18 @@ const Joi = require('joi');
 // this adds in middlware to post to api/courses
 app.use(express.json());
 
+console.log(process.env.NODE_ENV)
+
+app.use(function (req, res, next) {
+  console.log('logging...');
+  next();
+})
+
+app.use(function (req, res, next) {
+  console.log('authenticating...');
+  next();
+})
+
 const courses = [
   { id: 1, name: 'Finance' },
   { id: 2, name: 'CS' },
